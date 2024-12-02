@@ -1,0 +1,12 @@
+# model file
+*.pt
+
+# data
+new_data
+
+# env
+.env
+.gradio
+
+# experiment
+outputs

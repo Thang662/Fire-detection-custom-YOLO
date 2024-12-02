@@ -1,0 +1,2 @@
+loss_func: '' # (str) type of loss function to use
+model: yolo11n.pt # (str, optional) path to model file, i.e. yolov8n.pt, yolov8n.yaml
