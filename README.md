@@ -40,6 +40,7 @@ For `args` options, you can refer to `configs` folder with `model` config refer 
 
 ## [Yolov5](https://docs.ultralytics.com/yolov5/tutorials/architecture_description/#43-eliminate-grid-sensitivity)
 
+![Yolo anchor box](https://user-images.githubusercontent.com/31005897/158508119-fbb2e483-7b8c-4975-8e1f-f510d367f8ff.png#pic_center)
 
 ![Yolov5 bounding box](https://user-images.githubusercontent.com/31005897/158508027-8bf63c28-8290-467b-8a3e-4ad09235001a.png#pic_center)
 
