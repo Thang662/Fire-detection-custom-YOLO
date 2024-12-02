@@ -18,7 +18,7 @@ curl -L -o ./fire-detection-dataset.zip\
   https://www.kaggle.com/api/v1/datasets/download/trnthngl/fire-detection-dataset
 unzip fire-detection-dataset.zip
 
-pip install -r requirments.txt
+pip install -r requirements.txt
 ````
 
 After that, create an `.env` file with your CometML API key as 
