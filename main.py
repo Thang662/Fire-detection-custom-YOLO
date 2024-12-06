@@ -26,7 +26,7 @@ def main(cfg: DictConfig) -> None:
     model = CustomYOLO(**cfg['model'])
 
     # Train
-    exp_name = f"{cfg['model']['model'].split('.')[0]}_\
+    exp_name = f"{cfg['model']['model']}_\
 b{cfg['train']['batch']}_\
 e{cfg['train']['epochs']}_\
 box{cfg['train']['box']}_\
