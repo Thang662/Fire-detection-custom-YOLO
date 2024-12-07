@@ -31,7 +31,7 @@ b{cfg['train']['batch']}_\
 e{cfg['train']['epochs']}_\
 box{cfg['train']['box']}_\
 cls{cfg['train']['cls']}_\
-dfl{cfg['train']['cls']}_\
+dfl{cfg['train']['dfl']}_\
 {cfg['model']['loss_func']}"
     
     log.info(exp_name)
