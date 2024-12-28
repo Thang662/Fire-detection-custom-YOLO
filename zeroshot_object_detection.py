@@ -13,8 +13,7 @@ args = parser.parse_args()
 
 
 checkpoint = "google/owlv2-base-patch16-ensemble"
-# detector = pipeline(model=checkpoint, task="zero-shot-object-detection", device = 0)
-model = AutoModelForZeroShotObjectDetection.from_pretrained(checkpoint)
+model = AutoModelForZeroShotObjectDetection.from_pretrained(checkpoint).to("cuda")
 processor = AutoProcessor.from_pretrained(checkpoint)
 label2id = {'car_fire': 0, 'inhouse_fire': 1, 'wild_fire': 2, 'smoke': 3}
 id2label = {v: k for k, v in label2id.items()}
@@ -29,9 +28,11 @@ with torch.no_grad():
         image = example["image"]
         text_queries = ["car_fire", "inhouse_fire", "wild_fire", "smoke"]
         inputs = processor(text=text_queries, images=image, return_tensors="pt")
+        inputs = {k: v.to("cuda") for k, v in inputs.items()}
         target_sizes = torch.tensor([image.size[::-1]])
         outputs = model(**inputs)
         predictions = processor.post_process_object_detection(outputs, threshold = args.threshold, target_sizes=target_sizes)[0]
+        predictions = {k: v.cpu() for k, v in predictions.items()}
         postprocessed_target = []
         postprocessed_predictions = []
         postprocessed_target.append({
@@ -65,6 +66,7 @@ with torch.no_grad():
         image = example["image"]
         text_queries = ["car_fire", "inhouse_fire", "wild_fire", "smoke"]
         inputs = processor(text=text_queries, images=image, return_tensors="pt")
+        inputs = {k: v.to("cuda") for k, v in inputs.items()}
         target_sizes = torch.tensor([image.size[::-1]])
         outputs = model(**inputs)
         predictions = processor.post_process_object_detection(outputs, threshold = args.threshold, target_sizes=target_sizes)[0]
