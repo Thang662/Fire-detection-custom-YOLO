@@ -35,7 +35,7 @@ from datasets import load_dataset
 from huggingface_hub import HfApi
 from torch.utils.data import DataLoader
 from torchmetrics.detection.mean_ap import MeanAveragePrecision
-from tqdm import tqdm_notebook as tqdm
+from tqdm.notebook import tqdm
 
 import transformers
 from transformers import (
