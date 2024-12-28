@@ -22,8 +22,6 @@ id2label = {v: k for k, v in label2id.items()}
 dataset = load_dataset("data/data.py", trust_remote_code=True)
 metric = MeanAveragePrecision(box_format="xyxy", class_metrics=True)
 
-valid_dataset = dataset["validation"].select(range(10))
-
 with torch.no_grad():
     for example in tqdm(valid_dataset):
         image = example["image"]
