@@ -4,7 +4,7 @@ from transformers import AutoProcessor, AutoModelForZeroShotObjectDetection
 from datasets import load_dataset
 from torchmetrics.detection.mean_ap import MeanAveragePrecision
 import torch
-from tqdm import tqdm_notebook as tqdm
+from tqdm import tqdm
 import argparse
 
 parser = argparse.ArgumentParser()
