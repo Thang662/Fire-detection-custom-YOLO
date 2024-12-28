@@ -738,7 +738,7 @@ def main():
         logger.info("***** Running evaluation *****")
         metrics = evaluation_loop(model, image_processor, accelerator, valid_dataloader, id2label)
 
-        logger.info(f"epoch {epoch}: {metrics}")
+        print(f"epoch {epoch}: {metrics}")
 
         if args.output_dir is not None:
             with open(os.path.join(args.output_dir, f"all_results_epoch_{epoch}.json"), "w") as f:
@@ -785,10 +785,10 @@ def main():
     metrics = evaluation_loop(model, image_processor, accelerator, valid_dataloader, id2label)
     metrics = {f"eval_{k}": v for k, v in metrics.items()}
 
-    logger.info(f"Eval metrics: {metrics}")
+    print(f"Eval metrics: {metrics}")
 
     time_metrics = benchmark_loop(model, image_processor, accelerator, valid_dataloader, id2label)
-    logger.info(f"Benchmark metrics: {time_metrics}")
+    print(f"Benchmark metrics: {time_metrics}")
 
     if args.with_tracking:
         accelerator.end_training()
