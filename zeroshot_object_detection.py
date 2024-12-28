@@ -32,7 +32,6 @@ with torch.no_grad():
         target_sizes = torch.tensor([image.size[::-1]])
         outputs = model(**inputs)
         predictions = processor.post_process_object_detection(outputs, threshold = args.threshold, target_sizes=target_sizes)[0]
-        print(predictions)
         postprocessed_target = []
         postprocessed_predictions = []
         postprocessed_target.append({
