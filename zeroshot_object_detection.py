@@ -9,10 +9,11 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--threshold", type=float, default=0.1)
+parser.add_argument("--checkpoint", type=str, default="google/owlv2-base-patch16-ensemble")
 args = parser.parse_args()
 
 
-checkpoint = "google/owlv2-base-patch16-ensemble"
+checkpoint = args.checkpoint
 model = AutoModelForZeroShotObjectDetection.from_pretrained(checkpoint).to("cuda")
 processor = AutoProcessor.from_pretrained(checkpoint)
 label2id = {'car_fire': 0, 'inhouse_fire': 1, 'wild_fire': 2, 'smoke': 3}
