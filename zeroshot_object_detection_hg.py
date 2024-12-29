@@ -27,7 +27,7 @@ valid_dataset = dataset["validation"]
 with torch.no_grad():
     for example in tqdm(valid_dataset):
         image = example["image"]
-        text_queries = ["car_fire", "inhouse_fire", "wild_fire", "smoke"]
+        text_queries = "car_fire. inhouse_fire. wild_fire. smoke"
         inputs = processor(text=text_queries, images=image, return_tensors="pt")
         inputs = {k: v.to("cuda") for k, v in inputs.items()}
         target_sizes = torch.tensor([image.size[::-1]])
