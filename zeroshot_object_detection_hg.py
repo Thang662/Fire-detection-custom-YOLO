@@ -32,7 +32,7 @@ with torch.no_grad():
         inputs = {k: v.to("cuda") for k, v in inputs.items()}
         target_sizes = torch.tensor([image.size[::-1]])
         outputs = model(**inputs)
-        predictions = processor.post_process_object_detection(outputs, threshold = args.threshold, target_sizes=target_sizes)[0]
+        predictions = processor.post_process_grounded_object_detection(outputs, threshold = args.threshold, target_sizes=target_sizes)[0]
         predictions = {k: v.cpu() for k, v in predictions.items()}
         postprocessed_target = []
         postprocessed_predictions = []
@@ -70,7 +70,7 @@ with torch.no_grad():
         inputs = {k: v.to("cuda") for k, v in inputs.items()}
         target_sizes = torch.tensor([image.size[::-1]])
         outputs = model(**inputs)
-        predictions = processor.post_process_object_detection(outputs, threshold = args.threshold, target_sizes=target_sizes)[0]
+        predictions = processor.post_process_grounded_object_detection(outputs, threshold = args.threshold, target_sizes=target_sizes)[0]
 elapsed = time.time() - start
 imgs_per_sec = len(valid_dataset) / elapsed
 metrics = {"imgs_per_sec": imgs_per_sec, "elapsed": elapsed, "total_imgs": len(valid_dataset)}
