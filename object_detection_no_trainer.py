@@ -779,7 +779,7 @@ def main():
             accelerator.save_state(output_dir)
             dirs = [f.name for f in os.scandir(args.output_dir) if f.is_dir()]
             dirs.sort(key=os.path.getctime)
-            number_of_checkpoints_to_delete = len(dirs) - 2
+            number_of_checkpoints_to_delete = max(0, len(dirs) - 2)
             for i in range(number_of_checkpoints_to_delete):
                 checkpoint_to_delete = os.path.join(args.output_dir, dirs[i])
                 logger.info(f"Deleting older checkpoint [{checkpoint_to_delete}] due to args.save_total_limit")
