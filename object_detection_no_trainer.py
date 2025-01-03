@@ -781,7 +781,7 @@ def main():
             dirs.sort(key=os.path.getctime)
             number_of_checkpoints_to_delete = max(0, len(dirs) - 2)
             for i in range(number_of_checkpoints_to_delete):
-                checkpoint_to_delete = os.path.join(args.output_dir, dirs[i])
+                checkpoint_to_delete = dirs[i]
                 logger.info(f"Deleting older checkpoint [{checkpoint_to_delete}] due to args.save_total_limit")
                 shutil.rmtree(checkpoint_to_delete, ignore_errors=True)
 
